@@ -1,0 +1,102 @@
+<section>
+  <div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
+      <div class="logo__wrapper">
+        <!--        TODO: tutaj wstaw logo-->
+        <div class="logo">
+          <img
+            class="logo__desktop"
+            src="../../assets/img/yanosik-logo-desktop.png"
+            alt="logo"
+          />
+          <img
+            class="logo__mobile"
+            src="../../assets/img/yanosik-logo-mobile.png"
+            alt="logo"
+          />
+        </div>
+      </div>
+      <div class="form__content">
+        <h1>
+          Witamy w <span>yanosik</span
+          ><span class="form__title-domain">.pl</span>
+        </h1>
+        <h4>Zaloguj się do swojego konta:</h4>
+        <div class="form__wrapper">
+          <div class="form__group field">
+            <input
+              class="form__field"
+              placeholder="Adres e-mail"
+              formControlName="email"
+            />
+            <label for="email" class="form__label">Adres e-mail</label>
+            <!--        Error wrapper-->
+            <div *ngIf="loginForm.controls['email'].touched">
+              <p
+                class="form__error"
+                *ngIf="loginForm.controls['email'].hasError('required')"
+              >
+                Wpisz adres e-mail
+              </p>
+              <p
+                class="form__error"
+                *ngIf="loginForm.controls['email'].hasError('pattern')"
+              >
+                Wpisz poprawny e-mail
+              </p>
+            </div>
+          </div>
+          <div class="form__group field">
+            <input
+              type="password"
+              class="form__field"
+              placeholder="Wpisz hasło"
+              formControlName="password"
+            />
+            <label for="email" class="form__label">Wpisz hasło</label>
+            <!--        Error wrapper-->
+            <div *ngIf="loginForm.controls['password'].touched">
+              <p
+                class="form__error"
+                *ngIf="loginForm.controls['password'].hasError('required')"
+              >
+                Hasło jest wymagane
+              </p>
+              <p
+                class="form__error"
+                *ngIf="loginForm.controls['password'].hasError('minlength')"
+              >
+                Hasło min 6 znaków
+              </p>
+            </div>
+          </div>
+          <div class="checkbox__wrapper">
+            <div class="checkbox__form">
+              <input
+                formControlName="checkbox"
+                type="checkbox"
+                id="checkbox-permissions"
+              />
+              <label for="checkbox">Akceptuję regulamin</label>
+              <label *ngIf="loginForm.controls['checkbox'].touched">
+                <p
+                  class="form__error"
+                  *ngIf="loginForm.controls['checkbox'].hasError('required')"
+                >
+                  Zaakceptuj regulamin
+                </p>
+              </label>
+            </div>
+            <div class="checkbox__form">
+              <input type="checkbox" id="checkbox" />
+              <label for="checkbox">Zapamiętaj mnie</label>
+            </div>
+          </div>
+          <div class="btn__wrapper">
+            <button class="btn" type="submit">Zaloguj się</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
